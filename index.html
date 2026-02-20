@@ -1110,8 +1110,8 @@
         <p class="confirmation-subtitle">Your order has been received. Complete your payment below.</p>
         <div class="confirmation-details" id="confirmation-details"></div>
         <p class="confirmation-total" id="confirmation-total"></p>
-        <p class="confirmation-pay-note">Enter this amount when prompted on SecureGive</p>
-        <a href="https://app.securegive.com/greermiddlecollege" target="_blank" rel="noopener" class="button-securegive" id="pay-button">
+        <p class="confirmation-pay-note" id="pay-note">Payment link coming soon — the team will follow up with instructions.</p>
+        <a href="#" target="_blank" rel="noopener" class="button-securegive" id="pay-button" hidden>
           Pay on SecureGive
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
@@ -1126,7 +1126,7 @@
   <script>
     /* Configuration — replace GOOGLE_SCRIPT_URL with your deployed Apps Script URL */
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyWM6qr1fHcD-2_6QFBCvi5UCrx8m4Td2aKyGIpvuumVoYSxc4gOnBFRctWEDF5wadgBw/exec";
-    const SECUREGIVE_URL = "https://app.securegive.com/greermiddlecollege";
+    const SECUREGIVE_URL = "";
     const ORDER_DEADLINE = new Date("2026-03-29T00:00:00");
     const GOLDEN_EGG_PRICE = 5;
     const CONFETTI_COLORS = ["#ffb606", "#8dd8f8", "#f8c8d4", "#7bc67e", "#dab6fc", "#ffd6a0", "#442e66"];
@@ -1339,7 +1339,13 @@
         "</dl>";
 
       confirmationTotal.textContent = "$" + orderData.total + ".00";
-      payButton.textContent = "Pay $" + orderData.total + " on SecureGive ";
+
+      if (SECUREGIVE_URL) {
+        payButton.href = SECUREGIVE_URL;
+        payButton.textContent = "Pay $" + orderData.total + " on SecureGive ";
+        payButton.hidden = false;
+        document.getElementById("pay-note").textContent = "Enter $" + orderData.total + ".00 when prompted on SecureGive";
+      }
 
       confirmationSection.scrollIntoView({ behavior: "smooth", block: "start" });
       launchConfetti();
