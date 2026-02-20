@@ -16,7 +16,7 @@
 
 function doPost(request) {
   var sheet = SpreadsheetApp.getActiveSheet();
-  var order = JSON.parse(request.postData.contents);
+  var order = JSON.parse(request.parameter.orderData);
 
   sheet.appendRow([
     new Date(),

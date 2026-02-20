@@ -1290,11 +1290,31 @@
         return Promise.resolve();
       }
 
-      return fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(orderData),
+      return new Promise(function (resolve) {
+        var iframe = document.createElement("iframe");
+        iframe.name = "order-submit-target";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+
+        var form = document.createElement("form");
+        form.method = "POST";
+        form.action = GOOGLE_SCRIPT_URL;
+        form.target = "order-submit-target";
+
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "orderData";
+        input.value = JSON.stringify(orderData);
+        form.appendChild(input);
+
+        document.body.appendChild(form);
+        form.submit();
+
+        setTimeout(function () {
+          document.body.removeChild(form);
+          document.body.removeChild(iframe);
+          resolve();
+        }, 2000);
       });
     }
 
