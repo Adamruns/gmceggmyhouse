@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg My Yard — GMC Track & Field Fundraiser</title>
+  <meta name="description" content="Order candy-filled Easter eggs for your yard! GMC Track & Field fundraiser in Taylors, SC. Delivered Easter Eve, April 4, 2026.">
+  <meta property="og:title" content="Egg My Yard — GMC Track & Field Fundraiser">
+  <meta property="og:description" content="Order candy-filled Easter eggs for your yard! Delivered Easter Eve by GMC Track & Field.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gmceggmyhouse.com">
+  <meta name="theme-color" content="#442e66">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,700;9..144,900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-deep: #442e66;
+      --purple-dark: #2d1d45;
+      --purple-medium: #5a3d87;
+      --gold: #ffb606;
+      --gold-light: #ffd566;
+      --gold-glow: rgba(255, 182, 6, 0.25);
+      --blue-light: #8dd8f8;
+      --cream: #fdf8ef;
+      --lavender: #f7f3fa;
+      --green-spring: #7bc67e;
+      --pink-soft: #f8c8d4;
+      --peach-soft: #ffd6a0;
+      --lilac-soft: #dab6fc;
+      --white: #ffffff;
+      --text-primary: #2a1f3d;
+      --text-secondary: #6b5d7b;
+      --border-light: #e8e0f0;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Figtree', system-ui, sans-serif;
+
+      --radius-small: 10px;
+      --radius-medium: 16px;
+      --radius-large: 24px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      line-height: 1.2;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      background: linear-gradient(180deg, var(--purple-dark) 0%, var(--purple-deep) 40%, var(--purple-medium) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 60px 20px 100px;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-wave {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+    }
+
+    .floating-egg {
+      position: absolute;
+      opacity: 0.35;
+      animation: float var(--duration) ease-in-out infinite;
+      animation-delay: var(--delay);
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33% { transform: translateY(-14px) rotate(5deg); }
+      66% { transform: translateY(10px) rotate(-3deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 100px;
+      padding: 6px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 10vw, 5.5rem);
+      font-weight: 900;
+      color: var(--gold);
+      text-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      opacity: 0.9;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-dates {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 24px;
+    }
+
+    .hero-dates strong {
+      color: var(--gold-light);
+      opacity: 1;
+    }
+
+    /* Countdown */
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .countdown-unit {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-small);
+      padding: 10px 14px;
+      min-width: 62px;
+    }
+
+    .countdown-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .countdown-label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .countdown-expired {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* CTA Button */
+
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gold);
+      color: var(--purple-dark);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 14px 36px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px var(--gold-glow);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--gold-glow);
+    }
+
+    .button-primary:active {
+      transform: translateY(0);
+    }
+
+    .button-primary:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* How It Works */
+
+    .how-it-works {
+      padding: 64px 20px;
+      background: var(--cream);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 900;
+      color: var(--purple-deep);
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+    .step-card {
+      background: var(--white);
+      border-radius: var(--radius-large);
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(68, 46, 102, 0.06);
+      border: 1px solid var(--border-light);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--lavender);
+      color: var(--purple-deep);
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      margin-bottom: 14px;
+    }
+
+    .step-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 6px;
+    }
+
+    .step-card p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    /* Order Section */
+
+    .order-section {
+      padding: 64px 20px 120px;
+      background: var(--lavender);
+    }
+
+    .order-container {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .order-form {
+      background: var(--white);
+      border-radius: var(--radius-large);
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(68, 46, 102, 0.08);
+      border: 1px solid var(--border-light);
+    }
+
+    .form-group {
+      border: none;
+      padding: 0;
+      margin-bottom: 32px;
+    }
+
+    .form-group:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .form-group legend,
+    .form-legend {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--purple-deep);
+      margin-bottom: 16px;
+      display: block;
+      padding: 0;
+    }
+
+    .form-label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .form-label:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text-primary);
+      background: var(--cream);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-small);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--purple-medium);
+      box-shadow: 0 0 0 3px rgba(90, 61, 135, 0.12);
+    }
+
+    textarea.form-input {
+      height: 100px;
+      padding: 12px 16px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .address-row {
+      display: grid;
+      grid-template-columns: 1fr 80px 100px;
+      gap: 12px;
+    }
+
+    /* Package Cards */
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .package-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-medium);
+      padding: 20px 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.2s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .package-card:hover {
+      border-color: var(--gold-light);
+    }
+
+    .package-card:has(input:checked) {
+      border-color: var(--gold);
+      background: #fffbf0;
+      box-shadow: 0 4px 16px var(--gold-glow);
+      transform: scale(1.03);
+    }
+
+    .package-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .package-eggs {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--purple-deep);
+      line-height: 1;
+    }
+
+    .package-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+    .package-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: -10px;
+      right: -6px;
+      background: var(--purple-deep);
+      color: var(--gold);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Golden Egg */
+
+    .golden-egg-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #fffdf5, #fff8e1);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-medium);
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .golden-egg-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 182, 6, 0.15) 50%, transparent 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 200% center; }
+      50% { background-position: -200% center; }
+    }
+
+    .golden-egg-card:has(input:checked) {
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px var(--gold-glow);
+    }
+
+    .golden-egg-check {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border: 2px solid var(--border-light);
+      border-radius: 6px;
+      background: var(--white);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .golden-egg-card:has(input:checked) .golden-egg-check {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .golden-egg-card:has(input:checked) .golden-egg-check::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 7px;
+      width: 6px;
+      height: 10px;
+      border: 2px solid var(--white);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .golden-egg-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .golden-egg-text {
+      position: relative;
+    }
+
+    .golden-egg-title {
+      font-weight: 700;
+      color: var(--purple-deep);
+      font-size: 1rem;
+    }
+
+    .golden-egg-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .golden-egg-price {
+      margin-left: auto;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--gold);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* Delivery Options */
+
+    .delivery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .delivery-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream);
+      border: 2px solid var(--border-light);
+      border-radius: var(--radius-medium);
+      padding: 18px 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+
+    .delivery-card:has(input:checked) {
+      border-color: var(--purple-deep);
+      background: var(--lavender);
+    }
+
+    .delivery-card input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .delivery-icon {
+      font-size: 1.5rem;
+    }
+
+    .delivery-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--purple-deep);
+    }
+
+    .delivery-description {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    /* Order Summary Bar */
+
+    .order-summary-bar {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--white);
+      border-top: 2px solid var(--gold);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      z-index: 50;
+      box-shadow: 0 -4px 24px rgba(68, 46, 102, 0.1);
+      border-radius: var(--radius-large) var(--radius-large) 0 0;
+      margin-top: 24px;
+    }
+
+    .order-total-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .order-total-amount {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--purple-deep);
+    }
+
+    .order-summary-bar .button-primary {
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    /* Confirmation */
+
+    .confirmation-section {
+      padding: 64px 20px 80px;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .confirmation-card {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-large);
+      padding: 40px 28px;
+      box-shadow: 0 4px 24px rgba(68, 46, 102, 0.08);
+      border: 1px solid var(--border-light);
+    }
+
+    .confirmation-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--green-spring);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .confirmation-icon svg {
+      width: 36px;
+      height: 36px;
+      color: var(--white);
+    }
+
+    .confirmation-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--purple-deep);
+      margin-bottom: 8px;
+    }
+
+    .confirmation-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .confirmation-details {
+      text-align: left;
+      background: var(--cream);
+      border-radius: var(--radius-medium);
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .confirmation-details dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px 16px;
+    }
+
+    .confirmation-details dt {
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .confirmation-details dd {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .confirmation-total {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--purple-deep);
+      margin-bottom: 6px;
+    }
+
+    .confirmation-pay-note {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .button-securegive {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: var(--purple-dark);
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 16px 40px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px var(--gold-glow);
+    }
+
+    .button-securegive:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px var(--gold-glow);
+    }
+
+    .button-securegive svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Confetti */
+
+    #confetti-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -12px;
+      left: var(--confetti-x);
+      width: var(--confetti-size);
+      height: var(--confetti-size);
+      background: var(--confetti-color);
+      opacity: 0;
+      animation: confetti-fall var(--confetti-speed) ease-out forwards;
+      animation-delay: var(--confetti-delay);
+    }
+
+    @keyframes confetti-fall {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) translateX(var(--confetti-drift)) rotate(var(--confetti-spin)); opacity: 0; }
+    }
+
+    /* Footer */
+
+    .site-footer {
+      background: var(--purple-dark);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.85rem;
+    }
+
+    .site-footer strong {
+      color: var(--gold);
+    }
+
+    /* Closed State */
+
+    .closed-message {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: var(--radius-large);
+      padding: 48px 28px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(68, 46, 102, 0.08);
+      border: 1px solid var(--border-light);
+    }
+
+    .closed-message h2 {
+      font-size: 1.8rem;
+      color: var(--purple-deep);
+      margin-bottom: 12px;
+    }
+
+    .closed-message p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Loading State */
+
+    .form-loading {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid var(--purple-dark);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+
+    @media (min-width: 640px) {
+      .steps {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .package-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .address-row {
+        grid-template-columns: 1fr 90px 110px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        padding: 80px 24px 110px;
+      }
+
+      .package-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .order-form {
+        padding: 40px 36px;
+      }
+
+      .order-summary-bar {
+        border-radius: 0 0 var(--radius-large) var(--radius-large);
+        margin-top: 0;
+        position: static;
+        box-shadow: none;
+        border-top: 2px solid var(--border-light);
+        padding: 24px 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <svg class="floating-egg" style="left:5%;top:12%;width:48px;height:64px;--duration:6s;--delay:0s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#f8c8d4"/></svg>
+    <svg class="floating-egg" style="left:88%;top:18%;width:36px;height:48px;--duration:7s;--delay:1.5s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#8dd8f8"/></svg>
+    <svg class="floating-egg" style="left:14%;top:62%;width:30px;height:40px;--duration:5.5s;--delay:0.8s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#7bc67e"/></svg>
+    <svg class="floating-egg" style="left:92%;top:55%;width:42px;height:56px;--duration:6.5s;--delay:2s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#ffb606"/></svg>
+    <svg class="floating-egg" style="left:50%;top:6%;width:26px;height:34px;--duration:7.5s;--delay:0.3s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#dab6fc"/></svg>
+    <svg class="floating-egg" style="left:72%;top:72%;width:34px;height:45px;--duration:6s;--delay:1.2s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#ffd6a0"/></svg>
+    <svg class="floating-egg" style="left:28%;top:78%;width:28px;height:37px;--duration:5s;--delay:2.5s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#8dd8f8"/></svg>
+    <svg class="floating-egg" style="left:62%;top:28%;width:22px;height:29px;--duration:8s;--delay:0.6s" viewBox="0 0 40 54" aria-hidden="true"><path d="M20 2C10 2 1 18 1 33c0 11 8 19 19 19s19-8 19-19C39 18 30 2 20 2z" fill="#f8c8d4"/></svg>
+
+    <div class="hero-content">
+      <p class="hero-badge">GMC Track & Field</p>
+      <h1 class="hero-title">Egg My Yard</h1>
+      <p class="hero-subtitle">We'll fill your yard with candy-filled Easter eggs on Easter Eve! Support GMC Track & Field.</p>
+      <p class="hero-dates">Order by <strong>March 28</strong> · Delivered <strong>Easter Eve, April 4</strong></p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Time remaining to order">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countdown-days">--</span>
+          <span class="countdown-label">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countdown-hours">--</span>
+          <span class="countdown-label">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countdown-minutes">--</span>
+          <span class="countdown-label">Min</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="countdown-seconds">--</span>
+          <span class="countdown-label">Sec</span>
+        </div>
+      </div>
+      <a href="#order" class="button-primary" id="hero-order-button">Order Now</a>
+    </div>
+
+    <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,30 C240,55 480,5 720,30 C960,55 1200,5 1440,30 L1440,60 L0,60 Z" fill="#fdf8ef"/>
+    </svg>
+  </header>
+
+  <main>
+    <section class="how-it-works">
+      <h2 class="section-title">How It Works</h2>
+      <ol class="steps">
+        <li class="step-card">
+          <span class="step-number">1</span>
+          <h3>Pick Your Package</h3>
+          <p>Choose how many candy-filled eggs you want, from 30 to 200.</p>
+        </li>
+        <li class="step-card">
+          <span class="step-number">2</span>
+          <h3>We Deliver Easter Eve</h3>
+          <p>Our team hides the eggs in your yard the night before Easter.</p>
+        </li>
+        <li class="step-card">
+          <span class="step-number">3</span>
+          <h3>Easter Morning Magic</h3>
+          <p>Kids wake up to a yard full of eggs ready for an egg hunt!</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="order-section" id="order">
+      <div class="order-container">
+        <h2 class="section-title">Place Your Order</h2>
+
+        <div id="order-form-wrapper">
+          <form class="order-form" id="order-form" novalidate>
+            <fieldset class="form-group">
+              <legend class="form-legend">Your Information</legend>
+              <label class="form-label">
+                Name
+                <input type="text" name="name" class="form-input" required autocomplete="name">
+              </label>
+              <label class="form-label">
+                Email
+                <input type="email" name="email" class="form-input" required autocomplete="email">
+              </label>
+              <label class="form-label">
+                Phone
+                <input type="tel" name="phone" class="form-input" required autocomplete="tel" inputmode="tel">
+              </label>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend class="form-legend">Choose Your Package</legend>
+              <div class="package-grid">
+                <label class="package-card">
+                  <input type="radio" name="package" value="30" data-price="25" required>
+                  <span class="package-eggs">30</span>
+                  <span class="package-label">eggs</span>
+                  <span class="package-price">$25</span>
+                </label>
+                <label class="package-card">
+                  <input type="radio" name="package" value="50" data-price="35">
+                  <span class="package-eggs">50</span>
+                  <span class="package-label">eggs</span>
+                  <span class="package-price">$35</span>
+                </label>
+                <label class="package-card">
+                  <input type="radio" name="package" value="75" data-price="45">
+                  <span class="package-eggs">75</span>
+                  <span class="package-label">eggs</span>
+                  <span class="package-price">$45</span>
+                </label>
+                <label class="package-card">
+                  <input type="radio" name="package" value="100" data-price="60">
+                  <span class="package-eggs">100</span>
+                  <span class="package-label">eggs</span>
+                  <span class="package-price">$60</span>
+                </label>
+                <label class="package-card">
+                  <input type="radio" name="package" value="200" data-price="100">
+                  <span class="package-badge">Best Value</span>
+                  <span class="package-eggs">200</span>
+                  <span class="package-label">eggs</span>
+                  <span class="package-price">$100</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend class="form-legend">Extras</legend>
+              <label class="golden-egg-card">
+                <input type="checkbox" name="goldenEgg" value="yes">
+                <span class="golden-egg-check" aria-hidden="true"></span>
+                <span class="golden-egg-text">
+                  <span class="golden-egg-title">Add a Golden Egg</span>
+                  <span class="golden-egg-subtitle">A special surprise egg with extra treats</span>
+                </span>
+                <span class="golden-egg-price">+$5</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend class="form-legend">Delivery Details</legend>
+              <label class="form-label">
+                Street Address
+                <input type="text" name="address" class="form-input" required autocomplete="street-address">
+              </label>
+              <div class="address-row">
+                <label class="form-label">
+                  City
+                  <input type="text" name="city" class="form-input" required autocomplete="address-level2">
+                </label>
+                <label class="form-label">
+                  State
+                  <input type="text" name="state" class="form-input" value="SC" required autocomplete="address-level1">
+                </label>
+                <label class="form-label">
+                  ZIP
+                  <input type="text" name="zip" class="form-input" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5">
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend class="form-legend">Delivery Method</legend>
+              <div class="delivery-grid">
+                <label class="delivery-card">
+                  <input type="radio" name="deliveryMethod" value="yard" checked>
+                  <span class="delivery-icon" aria-hidden="true">🌿</span>
+                  <span class="delivery-name">Yard Scatter</span>
+                  <span class="delivery-description">Eggs hidden throughout your yard</span>
+                </label>
+                <label class="delivery-card">
+                  <input type="radio" name="deliveryMethod" value="basket">
+                  <span class="delivery-icon" aria-hidden="true">🧺</span>
+                  <span class="delivery-name">Porch Basket</span>
+                  <span class="delivery-description">Eggs in a basket on your porch</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-group">
+              <legend class="form-legend">Special Notes</legend>
+              <label class="form-label">
+                Allergies, gate codes, dog in the yard, etc.
+                <textarea name="notes" class="form-input" rows="3"></textarea>
+              </label>
+            </fieldset>
+
+            <div class="order-summary-bar" id="order-summary-bar">
+              <div>
+                <span class="order-total-text">Total</span><br>
+                <span class="order-total-amount" id="order-total">$0</span>
+              </div>
+              <button type="submit" class="button-primary" id="submit-button" disabled>Submit Order</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="closed-message" id="closed-message" hidden>
+          <h2>Orders Are Closed</h2>
+          <p>Thanks for your interest! Orders for this year's Egg My Yard are now closed. See you next Easter!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="confirmation-section" id="confirmation" hidden>
+      <div id="confetti-container" aria-hidden="true"></div>
+      <div class="confirmation-card">
+        <div class="confirmation-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2 class="confirmation-title">Order Submitted!</h2>
+        <p class="confirmation-subtitle">Your order has been received. Complete your payment below.</p>
+        <div class="confirmation-details" id="confirmation-details"></div>
+        <p class="confirmation-total" id="confirmation-total"></p>
+        <p class="confirmation-pay-note">Enter this amount when prompted on SecureGive</p>
+        <a href="https://app.securegive.com/greermiddlecollege" target="_blank" rel="noopener" class="button-securegive" id="pay-button">
+          Pay on SecureGive
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><strong>GMC Track & Field</strong> · Greer Middle College Charter High School · Taylors, SC</p>
+  </footer>
+
+  <script>
+    /* Configuration — replace GOOGLE_SCRIPT_URL with your deployed Apps Script URL */
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyWM6qr1fHcD-2_6QFBCvi5UCrx8m4Td2aKyGIpvuumVoYSxc4gOnBFRctWEDF5wadgBw/exec";
+    const SECUREGIVE_URL = "https://app.securegive.com/greermiddlecollege";
+    const ORDER_DEADLINE = new Date("2026-03-29T00:00:00");
+    const GOLDEN_EGG_PRICE = 5;
+    const CONFETTI_COLORS = ["#ffb606", "#8dd8f8", "#f8c8d4", "#7bc67e", "#dab6fc", "#ffd6a0", "#442e66"];
+
+    /* DOM References */
+    const orderForm = document.getElementById("order-form");
+    const orderFormWrapper = document.getElementById("order-form-wrapper");
+    const orderSummaryBar = document.getElementById("order-summary-bar");
+    const orderTotalDisplay = document.getElementById("order-total");
+    const submitButton = document.getElementById("submit-button");
+    const confirmationSection = document.getElementById("confirmation");
+    const confirmationDetails = document.getElementById("confirmation-details");
+    const confirmationTotal = document.getElementById("confirmation-total");
+    const payButton = document.getElementById("pay-button");
+    const closedMessage = document.getElementById("closed-message");
+    const heroOrderButton = document.getElementById("hero-order-button");
+    const countdownDays = document.getElementById("countdown-days");
+    const countdownHours = document.getElementById("countdown-hours");
+    const countdownMinutes = document.getElementById("countdown-minutes");
+    const countdownSeconds = document.getElementById("countdown-seconds");
+    const countdownContainer = document.getElementById("countdown");
+
+    /* Countdown */
+
+    function updateCountdown() {
+      const now = new Date();
+      const remaining = ORDER_DEADLINE - now;
+
+      if (remaining <= 0) {
+        closeOrders();
+        return;
+      }
+
+      const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+      countdownDays.textContent = days;
+      countdownHours.textContent = hours;
+      countdownMinutes.textContent = minutes;
+      countdownSeconds.textContent = seconds;
+    }
+
+    function closeOrders() {
+      countdownContainer.innerHTML = '<span class="countdown-expired">Orders are now closed</span>';
+
+      if (heroOrderButton) {
+        heroOrderButton.style.display = "none";
+      }
+
+      orderFormWrapper.hidden = true;
+      orderSummaryBar.hidden = true;
+      closedMessage.hidden = false;
+    }
+
+    /* Order Total */
+
+    function getSelectedPackagePrice() {
+      const selectedPackage = orderForm.querySelector('input[name="package"]:checked');
+
+      if (!selectedPackage) {
+        return 0;
+      }
+
+      return parseInt(selectedPackage.dataset.price, 10);
+    }
+
+    function isGoldenEggSelected() {
+      return orderForm.querySelector('input[name="goldenEgg"]').checked;
+    }
+
+    function calculateTotal() {
+      let total = getSelectedPackagePrice();
+
+      if (isGoldenEggSelected()) {
+        total += GOLDEN_EGG_PRICE;
+      }
+
+      return total;
+    }
+
+    function updateOrderTotal() {
+      const total = calculateTotal();
+      orderTotalDisplay.textContent = "$" + total;
+      submitButton.disabled = total === 0;
+    }
+
+    /* Form Submission */
+
+    function collectFormData() {
+      const formData = new FormData(orderForm);
+      const selectedPackage = orderForm.querySelector('input[name="package"]:checked');
+
+      return {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        address: formData.get("address"),
+        city: formData.get("city"),
+        state: formData.get("state"),
+        zip: formData.get("zip"),
+        package: selectedPackage ? selectedPackage.value + " eggs" : "",
+        packagePrice: getSelectedPackagePrice(),
+        goldenEgg: isGoldenEggSelected(),
+        deliveryMethod: formData.get("deliveryMethod"),
+        notes: formData.get("notes") || "",
+        total: calculateTotal(),
+      };
+    }
+
+    function validateForm() {
+      const requiredInputs = orderForm.querySelectorAll("[required]");
+      let firstInvalid = null;
+
+      for (const input of requiredInputs) {
+        if (!input.checkValidity()) {
+          input.reportValidity();
+
+          if (!firstInvalid) {
+            firstInvalid = input;
+          }
+
+          return false;
+        }
+      }
+
+      if (!orderForm.querySelector('input[name="package"]:checked')) {
+        const packageSection = orderForm.querySelector('input[name="package"]').closest("fieldset");
+        packageSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        return false;
+      }
+
+      return true;
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+
+      if (!validateForm()) {
+        return;
+      }
+
+      const orderData = collectFormData();
+
+      orderForm.classList.add("form-loading");
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<span class="spinner"></span>Submitting...';
+
+      submitOrderToSheet(orderData)
+        .then(function () {
+          showConfirmation(orderData);
+        })
+        .catch(function () {
+          showConfirmation(orderData);
+        });
+    }
+
+    function submitOrderToSheet(orderData) {
+      if (GOOGLE_SCRIPT_URL === "REPLACE_WITH_YOUR_GOOGLE_SCRIPT_URL") {
+        return Promise.resolve();
+      }
+
+      return fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(orderData),
+      });
+    }
+
+    /* Confirmation */
+
+    function showConfirmation(orderData) {
+      orderFormWrapper.hidden = true;
+      orderSummaryBar.hidden = true;
+      confirmationSection.hidden = false;
+
+      const deliveryLabel = orderData.deliveryMethod === "yard" ? "Yard Scatter" : "Porch Basket";
+      const goldenLabel = orderData.goldenEgg ? "Yes (+$5)" : "No";
+
+      confirmationDetails.innerHTML =
+        "<dl>" +
+        "<dt>Name</dt><dd>" + escapeHtml(orderData.name) + "</dd>" +
+        "<dt>Package</dt><dd>" + escapeHtml(orderData.package) + " — $" + orderData.packagePrice + "</dd>" +
+        "<dt>Golden Egg</dt><dd>" + goldenLabel + "</dd>" +
+        "<dt>Delivery</dt><dd>" + deliveryLabel + "</dd>" +
+        "<dt>Address</dt><dd>" + escapeHtml(orderData.address) + ", " + escapeHtml(orderData.city) + ", " + escapeHtml(orderData.state) + " " + escapeHtml(orderData.zip) + "</dd>" +
+        (orderData.notes ? "<dt>Notes</dt><dd>" + escapeHtml(orderData.notes) + "</dd>" : "") +
+        "</dl>";
+
+      confirmationTotal.textContent = "$" + orderData.total + ".00";
+      payButton.textContent = "Pay $" + orderData.total + " on SecureGive ";
+
+      confirmationSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      launchConfetti();
+    }
+
+    function escapeHtml(text) {
+      const element = document.createElement("span");
+      element.textContent = text;
+      return element.innerHTML;
+    }
+
+    /* Confetti */
+
+    function launchConfetti() {
+      var confettiContainer = document.getElementById("confetti-container");
+      var CONFETTI_COUNT = 70;
+
+      for (var index = 0; index < CONFETTI_COUNT; index++) {
+        var piece = document.createElement("div");
+        piece.className = "confetti-piece";
+
+        var size = Math.random() * 8 + 5;
+        piece.style.setProperty("--confetti-x", Math.random() * 100 + "%");
+        piece.style.setProperty("--confetti-size", size + "px");
+        piece.style.setProperty("--confetti-color", CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)]);
+        piece.style.setProperty("--confetti-delay", Math.random() * 0.6 + "s");
+        piece.style.setProperty("--confetti-speed", (Math.random() * 1.5 + 2) + "s");
+        piece.style.setProperty("--confetti-drift", (Math.random() - 0.5) * 200 + "px");
+        piece.style.setProperty("--confetti-spin", Math.random() * 720 + "deg");
+
+        if (Math.random() > 0.5) {
+          piece.style.borderRadius = "50%";
+        }
+
+        confettiContainer.appendChild(piece);
+      }
+
+      setTimeout(function () {
+        confettiContainer.innerHTML = "";
+      }, 4000);
+    }
+
+    /* Event Listeners */
+
+    orderForm.addEventListener("change", function (event) {
+      if (event.target.name === "package" || event.target.name === "goldenEgg") {
+        updateOrderTotal();
+      }
+    });
+
+    orderForm.addEventListener("submit", handleFormSubmit);
+
+    /* Initialize */
+
+    function initialize() {
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      updateOrderTotal();
+    }
+
+    initialize();
+  </script>
+</body>
+</html>
