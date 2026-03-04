@@ -369,6 +369,18 @@
       box-shadow: 0 0 0 3px rgba(90, 61, 135, 0.12);
     }
 
+    .form-input.invalid {
+      border-color: #d94040;
+      box-shadow: 0 0 0 3px rgba(217, 64, 64, 0.1);
+    }
+
+    .form-error {
+      color: #d94040;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
     textarea.form-input {
       height: 100px;
       padding: 12px 16px;
@@ -1405,25 +1417,65 @@
       return data;
     }
 
-    function validateForm() {
-      const requiredInputs = orderForm.querySelectorAll("[required]");
-      let firstInvalid = null;
+    function clearErrors() {
+      var existing = orderForm.querySelectorAll(".form-error");
 
-      for (const input of requiredInputs) {
-        if (!input.checkValidity()) {
-          input.reportValidity();
+      for (var i = 0; i < existing.length; i++) {
+        existing[i].remove();
+      }
+
+      var invalidInputs = orderForm.querySelectorAll(".form-input.invalid");
+
+      for (var i = 0; i < invalidInputs.length; i++) {
+        invalidInputs[i].classList.remove("invalid");
+      }
+    }
+
+    function showFieldError(input, message) {
+      input.classList.add("invalid");
+      var error = document.createElement("span");
+      error.className = "form-error";
+      error.textContent = message;
+      input.parentNode.appendChild(error);
+    }
+
+    function validateForm() {
+      clearErrors();
+
+      var requiredInputs = orderForm.querySelectorAll("[required]");
+      var firstInvalid = null;
+
+      for (var i = 0; i < requiredInputs.length; i++) {
+        var input = requiredInputs[i];
+
+        if (!input.value.trim()) {
+          showFieldError(input, "This field is required");
 
           if (!firstInvalid) {
             firstInvalid = input;
           }
+        } else if (!input.checkValidity()) {
+          showFieldError(input, "Please enter a valid value");
 
-          return false;
+          if (!firstInvalid) {
+            firstInvalid = input;
+          }
         }
       }
 
       if (!orderForm.querySelector('input[name="package"]:checked')) {
-        const packageSection = orderForm.querySelector('input[name="package"]').closest("fieldset");
-        packageSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        var packageSection = orderForm.querySelector('input[name="package"]').closest("fieldset");
+
+        if (!firstInvalid) {
+          packageSection.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        return false;
+      }
+
+      if (firstInvalid) {
+        firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+        firstInvalid.focus();
         return false;
       }
 
@@ -1567,6 +1619,19 @@
     }
 
     /* Event Listeners */
+
+    orderForm.addEventListener("input", function (event) {
+      var input = event.target;
+
+      if (input.classList.contains("invalid") && input.value.trim() && input.checkValidity()) {
+        input.classList.remove("invalid");
+        var error = input.parentNode.querySelector(".form-error");
+
+        if (error) {
+          error.remove();
+        }
+      }
+    });
 
     orderForm.addEventListener("change", function (event) {
       if (event.target.name === "package" || event.target.name === "goldenEgg") {
