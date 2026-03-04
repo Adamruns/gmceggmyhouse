@@ -4,7 +4,8 @@
  * Setup:
  * 1. Create a new Google Sheet
  * 2. Add these column headers to Row 1:
- *    Timestamp | Name | Email | Phone | Address | City | State | ZIP | Package | Golden Egg | Delivery Method | Notes | Total
+ *    Timestamp | Name | Email | Phone | Order Type | Recipient Name | Recipient Phone | Recipient Email |
+ *    Address | City | State | ZIP | Package | Golden Egg | Delivery Method | Notes | Total
  * 3. Click Extensions > Apps Script
  * 4. Delete any code in the editor and paste this entire file
  * 5. Click Deploy > New deployment
@@ -23,6 +24,10 @@ function doPost(request) {
     order.name,
     order.email,
     order.phone,
+    order.orderType || "My Yard",
+    order.recipientName || "",
+    order.recipientPhone || "",
+    order.recipientEmail || "",
     order.address,
     order.city,
     order.state,
