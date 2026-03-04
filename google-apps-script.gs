@@ -39,7 +39,40 @@ function doPost(request) {
     "$" + order.total
   ]);
 
+  sendConfirmationEmail(order);
+
   return ContentService
     .createTextOutput(JSON.stringify({ result: "success" }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+function sendConfirmationEmail(order) {
+  var deliveryLabel = order.deliveryMethod === "yard" ? "Yard Scatter" : "Porch Basket";
+  var address = order.address + ", " + order.city + ", " + order.state + " " + order.zip;
+
+  var body = "Hi " + order.name + ",\n\n" +
+    "Thanks for your Egg My Yard order! Here's your summary:\n\n" +
+    "Package: " + order.package + "\n" +
+    "Golden Egg: " + (order.goldenEgg ? "Yes (+$5)" : "No") + "\n" +
+    "Delivery Method: " + deliveryLabel + "\n" +
+    "Delivery Address: " + address + "\n";
+
+  if (order.recipientName) {
+    body += "Recipient: " + order.recipientName + "\n";
+  }
+
+  if (order.notes) {
+    body += "Instructions: " + order.notes + "\n";
+  }
+
+  body += "Total: $" + order.total + ".00\n\n" +
+    "Eggs will be delivered Easter Eve, April 4. " +
+    "The team will follow up with payment instructions.\n\n" +
+    "Thank you for supporting GMC Track & Field!\n";
+
+  MailApp.sendEmail({
+    to: order.email,
+    subject: "Egg My Yard — Order Confirmation",
+    body: body
+  });
 }
