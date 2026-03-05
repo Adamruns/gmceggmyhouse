@@ -5,7 +5,7 @@
  * 1. Create a new Google Sheet
  * 2. Add these column headers to Row 1:
  *    Timestamp | Name | Email | Phone | Order Type | Recipient Name | Recipient Phone | Recipient Email |
- *    Address | City | State | ZIP | Package | Golden Egg | Delivery Method | Notes | Total
+ *    Address | City | State | ZIP | Package | Delivery Method | Notes | Total
  * 3. Click Extensions > Apps Script
  * 4. Delete any code in the editor and paste this entire file
  * 5. Click Deploy > New deployment
@@ -33,7 +33,6 @@ function doPost(request) {
     order.state,
     order.zip,
     order.package,
-    order.goldenEgg ? "Yes" : "No",
     order.deliveryMethod,
     order.notes,
     "$" + order.total
@@ -49,8 +48,6 @@ function doPost(request) {
 function sendConfirmationEmail(order) {
   var deliveryLabel = order.deliveryMethod === "yard" ? "Yard Scatter" : "Porch Basket";
   var address = order.address + ", " + order.city + ", " + order.state + " " + order.zip;
-  var goldenLabel = order.goldenEgg ? "Yes (+$5)" : "No";
-
   var recipientRow = "";
   if (order.recipientName) {
     recipientRow =
@@ -92,10 +89,6 @@ function sendConfirmationEmail(order) {
               '<tr>' +
                 '<td style="padding:8px 12px;color:#6b5d7b;font-weight:600;font-size:14px;">Package</td>' +
                 '<td style="padding:8px 12px;color:#2a1f3d;font-weight:600;font-size:14px;">' + order.package + '</td>' +
-              '</tr>' +
-              '<tr>' +
-                '<td style="padding:8px 12px;color:#6b5d7b;font-weight:600;font-size:14px;">Golden Egg</td>' +
-                '<td style="padding:8px 12px;color:#2a1f3d;font-weight:600;font-size:14px;">' + goldenLabel + '</td>' +
               '</tr>' +
               '<tr>' +
                 '<td style="padding:8px 12px;color:#6b5d7b;font-weight:600;font-size:14px;">Delivery</td>' +
