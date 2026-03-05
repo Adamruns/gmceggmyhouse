@@ -136,6 +136,8 @@ function sendConfirmationEmail(order) {
     to: order.email,
     subject: "Egg My Yard — Order Confirmation",
     body: "Thanks for your Egg My Yard order! Package: " + order.package + ", Total: $" + order.total + ".00. Eggs delivered Easter Eve, April 4.",
-    htmlBody: html
+    htmlBody: html,
+    name: "GMC Track & Field",
+    replyTo: "adentler@greermiddlecollege.org"
   });
 }
