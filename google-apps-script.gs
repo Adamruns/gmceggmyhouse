@@ -116,9 +116,14 @@ function sendConfirmationEmail(order) {
           '</div>' +
 
           // Next steps
-          '<div style="background:#f7f3fa;border-radius:12px;padding:16px 20px;text-align:center;">' +
-            '<p style="color:#442e66;font-weight:700;font-size:14px;margin:0 0 4px;">What\'s Next?</p>' +
-            '<p style="color:#6b5d7b;font-size:13px;margin:0;">Eggs will be delivered Easter Eve, April 4. The team will follow up with payment instructions.</p>' +
+          '<div style="background:#f7f3fa;border-radius:12px;padding:16px 20px;text-align:left;">' +
+            '<p style="color:#442e66;font-weight:700;font-size:14px;margin:0 0 8px;text-align:center;">What\'s Next?</p>' +
+            '<ul style="color:#6b5d7b;font-size:13px;margin:0;padding-left:20px;list-style:disc;">' +
+              '<li style="margin-bottom:6px;">The team will follow up via email with a second confirmation when payment is verified.</li>' +
+              '<li style="margin-bottom:6px;">Eggs will be delivered by the Blazer Bunnies on Easter Eve, April 4.</li>' +
+              '<li style="margin-bottom:6px;">You will receive a text message approximately 20\u201330 minutes before delivery.</li>' +
+              '<li>In case of inclement weather, all eggs will be delivered to your porch in a basket.</li>' +
+            '</ul>' +
           '</div>' +
         '</div>' +
 
