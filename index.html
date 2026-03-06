@@ -1043,7 +1043,7 @@
         <li class="step-card">
           <span class="step-number">1</span>
           <h3>Pick Your Package</h3>
-          <p>Choose how many candy-filled eggs you want, from 30 to 200.</p>
+          <p>Choose how many candy-filled eggs you want, from 25 to 200.</p>
         </li>
         <li class="step-card">
           <span class="step-number">2</span>
@@ -1204,7 +1204,7 @@
                   <input type="radio" name="deliveryMethod" value="basket">
                   <span class="delivery-icon" aria-hidden="true">🧺</span>
                   <span class="delivery-name">Porch Basket</span>
-                  <span class="delivery-description">Eggs in a basket on your porch</span>
+                  <span class="delivery-description">Eggs in a basket on your porch (+$2)</span>
                 </label>
               </div>
               <p class="delivery-note">Delivery available in Greenville County, Lyman, Duncan, and Welford. For locations outside this area, email <a href="mailto:adentler@greermiddlecollege.org">adentler@greermiddlecollege.org</a> for pre-approval.</p>
@@ -1365,7 +1365,12 @@
     }
 
     function calculateTotal() {
-      return getSelectedPackagePrice();
+      var total = getSelectedPackagePrice();
+      var delivery = orderForm.querySelector('input[name="deliveryMethod"]:checked');
+      if (delivery && delivery.value === "basket") {
+        total += 2;
+      }
+      return total;
     }
 
     function updateOrderTotal() {
@@ -1627,7 +1632,7 @@
     });
 
     orderForm.addEventListener("change", function (event) {
-      if (event.target.name === "package") {
+      if (event.target.name === "package" || event.target.name === "deliveryMethod") {
         updateOrderTotal();
       }
 
