@@ -73,7 +73,7 @@ function sendConfirmationEmail(order) {
         // Header
         '<div style="background:linear-gradient(180deg,#2d1d45 0%,#442e66 100%);border-radius:16px 16px 0 0;padding:32px 24px;text-align:center;">' +
           '<p style="color:rgba(255,255,255,0.7);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin:0 0 8px;">GMC Track &amp; Field</p>' +
-          '<h1 style="color:#ffb606;font-size:28px;font-weight:900;font-style:italic;margin:0 0 8px;text-shadow:0 2px 0 rgba(0,0,0,0.2);">Egg My Yard</h1>' +
+          '<h1 style="color:#ffb606;font-size:28px;font-weight:900;font-style:italic;margin:0 0 8px;text-shadow:0 2px 0 rgba(0,0,0,0.2);">Egg My House</h1>' +
           '<p style="color:rgba(255,255,255,0.85);font-size:14px;margin:0;">Order Confirmation</p>' +
         '</div>' +
 
@@ -132,8 +132,8 @@ function sendConfirmationEmail(order) {
 
   MailApp.sendEmail({
     to: order.email,
-    subject: "Egg My Yard — Order Confirmation",
-    body: "Thanks for your Egg My Yard order! Package: " + order.package + ", Total: $" + order.total + ".00. Eggs delivered Easter Eve, April 4.",
+    subject: "Egg My House — Order Confirmation",
+    body: "Thanks for your Egg My House order! Package: " + order.package + ", Total: $" + order.total + ".00. Eggs delivered Easter Eve, April 4.",
     htmlBody: html,
     name: "GMC Track & Field",
     replyTo: "adentler@greermiddlecollege.org"
